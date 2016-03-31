@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="DR\Gallery\Block\Adminhtml\Image\Edit" name="dr_gallery_image_edit"/>
+        </referenceContainer>
+    </body>
+</page>

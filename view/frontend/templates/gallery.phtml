@@ -1,0 +1,17 @@
+<ul class="gallery-<?php echo $this->getGallery()->getId(); ?>">
+    <?php foreach ($block->getImages() as $image): ?>
+        <li><?php echo $block->getImageHtml($image) ?></li>
+    <?php endforeach; ?>
+</ul>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'snapGallery'
+    ], function ($) {
+        $('.gallery-<?php echo $this->getGallery()->getId(); ?>').snapGallery({
+            minWidth: 100,
+            maxCols: 4,
+            margin: 5
+        });
+    });
+</script>

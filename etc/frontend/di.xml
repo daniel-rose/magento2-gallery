@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="DR\Gallery\Block\Widget\Gallery">
+        <arguments>
+            <argument name="teaserGroupRepository" xsi:type="object">DavidVerholen\Teaser\Api\TeaserGroupRepositoryInterface\Proxy</argument>
+        </arguments>
+    </type>
+</config>

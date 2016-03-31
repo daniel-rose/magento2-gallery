@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="DR\Gallery\Api\Data\GalleryInterface" type="DR\Gallery\Model\Gallery" />
+    <preference for="DR\Gallery\Api\GalleryRepositoryInterface" type="DR\Gallery\Model\GalleryRepository" />
+
+    <preference for="DR\Gallery\Api\Data\ImageInterface" type="DR\Gallery\Model\Image" />
+    <preference for="DR\Gallery\Api\ImageRepositoryInterface" type="DR\Gallery\Model\ImageRepository" />
+
+    <virtualType name="GalleryGridCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dr_gallery_gallery</argument>
+            <argument name="resourceModel" xsi:type="string">DR\Gallery\Model\ResourceModel\Gallery</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dr_gallery_gallery_listing_data_source" xsi:type="string">GalleryGridCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="ImageGridCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dr_gallery_image</argument>
+            <argument name="resourceModel" xsi:type="string">DR\Gallery\Model\ResourceModel\Image</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dr_gallery_image_listing_data_source" xsi:type="string">ImageGridCollection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

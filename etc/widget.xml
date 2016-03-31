@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="dr_gallery_gallery" class="DR\Gallery\Block\Widget\Gallery">
+        <label translate="true">Gallery</label>
+        <description translate="true">A group of images.</description>
+        <parameters>
+            <parameter name="gallery_id" xsi:type="block" visible="true" required="true" sort_order="0">
+                <label translate="true">Gallery</label>
+                <block class="DR\Gallery\Block\Adminhtml\Gallery\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Gallery...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="5">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="gallery.phtml" selected="true">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
