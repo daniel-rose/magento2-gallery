@@ -4,6 +4,7 @@ namespace DR\Gallery\Block\Adminhtml\Gallery\Edit\Tab;
 
 use DR\Gallery\Api\Data\GalleryInterface;
 use DR\Gallery\Api\Data\ImageInterface;
+use DR\Gallery\Model\ResourceModel\Image\Collection;
 use DR\Gallery\Model\ResourceModel\Image\CollectionFactory;
 use Magento\Backend\Block\Widget\Grid\Extended;
 use Magento\Backend\Block\Template\Context;
@@ -71,11 +72,9 @@ class Images extends Extended
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();
 
-        $collection->getSelect()->joinLeft(
-            ['link_table' => $collection->getTable('dr_gallery_gallery_image')],
-            'main_table.image_id = link_table.image_id',
-            ['gallery_id', 'position']
-        );
+        if ($this->getGallery() && $this->getGallery()->getId()) {
+            $collection->setGalleryFilter($this->getGallery());
+        }
 
         $this->setCollection($collection);
 
@@ -92,7 +91,7 @@ class Images extends Extended
             'name' => 'in_gallery',
             'values' => $this->getSelectedImages(),
             'index' => 'image_id',
-            'filter_index' => 'link_table.image_id',
+            'filter_index' => 'main_table.image_id',
             'header_css_class' => 'col-select col-massaction',
             'column_css_class' => 'col-select col-massaction'
         ]);
@@ -100,7 +99,7 @@ class Images extends Extended
         $this->addColumn(ImageInterface::ID, [
             'header' => __('Image Id'),
             'index' => 'image_id',
-            'filter_index' => 'link_table.image_id',
+            'filter_index' => 'main_table.image_id',
         ]);
 
         $this->addColumn('image_name', [
@@ -116,13 +115,6 @@ class Images extends Extended
         $this->addColumn('image_updated_at', [
             'header' => __('Updated Time'),
             'index' => ImageInterface::UPDATED_AT
-        ]);
-
-        $this->addColumn('position', [
-            'header' => __('Position'),
-            'type' => 'number',
-            'index' => 'position',
-            'editable' => true
         ]);
 
         $this->addColumn('position', [
