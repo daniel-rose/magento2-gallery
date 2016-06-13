@@ -12,9 +12,12 @@
       "type": "composer",
       "url": "https://repo.magento.com/"
     }
+  ],"keywords": [
+    "Magento 2",
+    "Gallery"
   ],
   "type": "magento2-module",
-  "license": "OSL-3.0",
+  "license": "MIT",
   "autoload": {
     "files": [
       "registration.php"
