@@ -5,7 +5,7 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
-                    <resource id="DR_Gallery::gallery">
+                    <resource id="DR_Gallery::gallery" title="Gallery">
                         <resource id="DR_Gallery::gallery_gallery"
                                   title="Gallery"
                                   sortOrder="95">
